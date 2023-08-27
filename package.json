@@ -1,0 +1,20 @@
+{
+  "name": "kur2-qrcode",
+  "version": "0.1.0",
+
+  "scripts": {
+    "build": "webpack --mode production",
+    "develop": "webpack --mode development --watch",
+    "upload": "kintone-plugin-uploader dist/plugin.zip --watch --waiting-dialog-ms 3000",
+    "lint": "eslint src",
+    "start": "npm run develop"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^18.0.3",
+    "@kintone/plugin-packer": "^6.0.39",
+    "@kintone/webpack-plugin-kintone-plugin": "^7.0.4",
+    "eslint": "^8.37.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
