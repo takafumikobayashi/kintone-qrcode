@@ -4,3 +4,6 @@ dist
 
 ## ppkファイル
 *.ppk
+
+## DS_Store
+.DS_Store
