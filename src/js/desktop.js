@@ -3,9 +3,12 @@ jQuery.noConflict();
 (function($, PLUGIN_ID) {
   'use strict';
 
-  kintone.events.on('app.record.detail.show', function() {
-    let config = kintone.plugin.app.getConfig(PLUGIN_ID);
-    let qrfield = events.record[config.qrfield].value;
+  kintone.events.on('app.record.detail.show', function(event) {
+    const config = kintone.plugin.app.getConfig(PLUGIN_ID);
+    const rec = event.record;
+    const qrfield = rec[config.qrfield].value;
+
+    console.log('qrfield=' + qrfield);
 
     // スペース要素の取得（PCとモバイルで要素取得のメソッドが違います）
     const space = kintone.app.record.getSpaceElement(config.qrcode);

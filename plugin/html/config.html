@@ -1,21 +1,28 @@
 <section class="settings">
-  <h2 class="settings-heading">QRコード作成 for kuru2net の設定画面</h2>
-  <p class="kintoneplugin-desc">This message is displayed on the app page after the app has been updated.</p>
+  <h2 class="settings-heading">設定画面</h2>
+  <p class="kintoneplugin-desc">ここで、どのフィールドにQRコードを表示するか？どの値をQRコードに変換するか設定します。</p>
   <form class="js-submit-settings">
-    <!-- フィールド選択部分 -->
-    <div>
-      <label for="field-selection">QRコード表示フィールド:</label>
-      <div class="field-selection-area">
-          <!-- JavaScriptで<select>エレメントがここに挿入されます -->
+    <p class="kintoneplugin-row">
+      QRコードを表示させたいフィールドを選択してください（スペースのみ）
+      <div class="kintoneplugin-select-outer">
+        <div class="kintoneplugin-select">
+          <div class="field-selection-area">
+              <!-- JavaScriptで<select>エレメントがここに挿入されます -->
+          </div>
+        </div>
       </div>
-    </div>
+    </p>
 
-    <div>
-      <label for="field-selection-2">QRコードにする値が格納されているフィールド(文字列1行のみ):</label>
-      <div class="field-selection-area-2">
-          <!-- JavaScriptで<select>エレメントがここに挿入されます -->
+    <p class="kintoneplugin-row">
+      QRコードに変換したい値が格納されているフィールドを選択してください(文字列1行のみ)
+      <div class="kintoneplugin-select-outer">
+        <div class="kintoneplugin-select">
+          <div class="field-selection-area-2">
+              <!-- JavaScriptで<select>エレメントがここに挿入されます -->
+          </div>
+        </div>
       </div>
-    </div>
+    </p>
 
     <p class="kintoneplugin-row">
         <button type="button" class="js-cancel-button kintoneplugin-button-dialog-cancel">Cancel</button>

@@ -8,8 +8,7 @@
       "js/desktop.js"
     ],
     "css": [
-      "css/51-modern-default.css",
-      "css/desktop.css"
+      "css/51-modern-default.css"
     ]
   },
   "icon": "image/icon.png",
@@ -20,8 +19,7 @@
       "js/config.js"
     ],
     "css": [
-      "css/51-modern-default.css",
-      "css/config.css"
+      "css/51-modern-default.css"
     ],
     "required_params": [
       "qrcode",
@@ -40,9 +38,6 @@
     "js": [
       "https://js.cybozu.com/jquery/3.3.1/jquery.min.js",
       "js/mobile.js"
-    ],
-    "css": [
-      "css/mobile.css"
     ]
   }
 }

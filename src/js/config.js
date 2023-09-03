@@ -12,9 +12,6 @@ jQuery.noConflict();
   let appId = kintone.app.getId();
   let config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
-  console.log('qrcode =' + config.qrcode);
-  console.log('qrqrfield =' + config.qrfield);
-
   let $selectMenu = $('<select>').attr('id', 'field-selection').attr('name', 'fieldSelection');
   let $selectMenu_2 = $('<select>').attr('id', 'field-selection-2').attr('name', 'fieldSelection2');
 
