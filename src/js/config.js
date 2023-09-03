@@ -5,17 +5,20 @@ jQuery.noConflict();
 
   let $form = $('.js-submit-settings');
   let $cancelButton = $('.js-cancel-button');
-  let $message = $('.js-text-message');
-  if (!($form.length > 0 && $cancelButton.length > 0 && $message.length > 0)) {
+  if (!($form.length > 0 && $cancelButton.length > 0)) {
     throw new Error('Required elements do not exist.');
   }
 
   let appId = kintone.app.getId();
   let config = kintone.plugin.app.getConfig(PLUGIN_ID);
 
+  console.log('qrcode =' + config.qrcode);
+  console.log('qrqrfield =' + config.qrfield);
+
+  let $selectMenu = $('<select>').attr('id', 'field-selection').attr('name', 'fieldSelection');
+  let $selectMenu_2 = $('<select>').attr('id', 'field-selection-2').attr('name', 'fieldSelection2');
+
   kintone.api('/k/v1/form', 'GET', {app: appId}, function(resp) {
-    let $selectMenu = $('<select>').attr('id', 'field-selection');
-    let $selectMenu_2 = $('<select>').attr('id', 'field-selection-2');
 
     for (let key in resp.properties) {
         let field = resp.properties[key];
@@ -23,8 +26,8 @@ jQuery.noConflict();
         //field-selectionへの格納
         if (field.type === 'SPACER') {
           let $option = $('<option>').val(field.elementId).text(field.elementId);
-          if (config.qrcode) {
-            $option.properties('selecetd', true);
+          if (field.elementId === config.qrcode) {
+            $option.prop('selected', true);
           }
           $selectMenu.append($option);
         }
@@ -32,8 +35,8 @@ jQuery.noConflict();
         //field-selection-2への格納
         if (field.type === 'SINGLE_LINE_TEXT') {
           let $option_2 = $('<option>').val(field.code).text(field.label);
-          if (config.qrfield) {
-            $option_2.properties('selecetd', true);
+          if (field.code === config.qrfield) {
+            $option_2.prop('selected', true);
           }
           $selectMenu_2.append($option_2);
         }
@@ -49,6 +52,8 @@ jQuery.noConflict();
 
   $form.on('submit', function(e) {
     e.preventDefault();
+    console.log('$selectMenu.val()=' + $selectMenu.val());
+    console.log('$selectMenu_2.val()=' + $selectMenu_2.val());
     kintone.plugin.app.setConfig({qrcode: $selectMenu.val(), qrfield: $selectMenu_2.val()}, function() {
       alert('設定を正しく保存しました。「アプリの設定」に戻ってアプリを更新してください。');
       window.location.href = '../../flow?app=' + kintone.app.getId();

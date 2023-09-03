@@ -3,24 +3,20 @@ jQuery.noConflict();
 (function($, PLUGIN_ID) {
   'use strict';
 
-  kintone.events.on('mobile.app.record.index.show', function() {
-    var config = kintone.plugin.app.getConfig(PLUGIN_ID);
+  kintone.events.on('app.record.detail.show', function() {
+    let config = kintone.plugin.app.getConfig(PLUGIN_ID);
+    let qrfield = events.record[config.qrfield].value;
 
-    var spaceElement = kintone.mobile.app.getHeaderSpaceElement();
-    if (spaceElement === null) {
-      throw new Error('The header element is unavailable on this page');
-    }
-    var fragment = document.createDocumentFragment();
-    var headingEl = document.createElement('h3');
-    var messageEl = document.createElement('p');
+    // スペース要素の取得（PCとモバイルで要素取得のメソッドが違います）
+    const space = kintone.mobile.app.record.getSpaceElement(config.qrcode);
+    // QRコード用のimg要素を作ります
+    const img = document.createElement('img');
+    // GETクエリにQRコード化したい文字列を含めて画像のソースとして使うことができます。
+    // サイズを 150 x 150 に指定しています。
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + qrfield;
 
-    messageEl.classList.add('plugin-space-message');
-    messageEl.textContent = config.message;
-    headingEl.classList.add('plugin-space-heading');
-    headingEl.textContent = 'Hello kintone plugin!';
+    // スペース要素に追加して表示完了
+    space.appendChild(img);
 
-    fragment.appendChild(headingEl);
-    fragment.appendChild(messageEl);
-    spaceElement.appendChild(fragment);
   });
 })(jQuery, kintone.$PLUGIN_ID);

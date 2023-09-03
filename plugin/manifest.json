@@ -24,7 +24,8 @@
       "css/config.css"
     ],
     "required_params": [
-      "message"
+      "qrcode",
+      "qrfield"
     ]
   },
   "name": {
