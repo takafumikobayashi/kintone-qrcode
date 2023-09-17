@@ -1,6 +1,11 @@
 {
-  "name": "kur2-qrcode",
-  "version": "0.1.0",
+  "name": "kuru2-qrcode",
+  "version": "1.0.0",
+  "author": {
+    "name": "Takafumi Kobayashi",
+    "email": "takabumi.k@gmail.com",
+    "url": "https://tariki-code.tokyo/"
+  },
 
   "scripts": {
     "build": "webpack --mode production",
